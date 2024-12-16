@@ -23,16 +23,13 @@ let arrowLeft = document.querySelector(".arrow_left")
 let arrowRight = document.querySelector(".arrow_right")
 
 arrowLeft.addEventListener("click", () =>{
-	changeDotSelected(-1)
-	changeSlideImg_texte(-1)
-	currentSlide--
+	nextSlide = changeSlide (-1)
+	currentSlide= nextSlide
 })
 
 arrowRight.addEventListener("click", () =>{
-	changeDotSelected(+1)
-	changeSlideImg_texte(+1)
-	currentSlide++
-	
+	nextSlide = changeSlide (+1)
+	currentSlide= nextSlide		
 })
 
 //---------------------------------------------//
@@ -57,26 +54,16 @@ divDot.appendChild(dot)
 
 //---------------------------------------------//
 
-//Modif : change le bullet point actif au suivant //
+//Modif : change le bullet point img et texte actif au suivant //
 
-function changeDotSelected (direction) {
+function changeSlide (direction) {
 
 	let nextSlide = currentSlide + direction
 	let currentDot = document.querySelector(".dot"+currentSlide)
-	let nextDot = document.querySelector(".dot"+nextSlide)
 
-	currentDot.classList.remove("dot_selected")
-	nextDot.classList.add("dot_selected")
-
-}
-
-//---------------------------------------------//
-
-//Modif : change le IMG et texte actif au suivant //
-
-function changeSlideImg_texte (direction) {
-
-	let nextSlide = currentSlide + direction
+	if (currentSlide==3 && direction==1 || currentSlide==0 && direction==-1) {
+		nextSlide = 3-currentSlide
+	}
 
 	let currentImg = document.querySelector(".banner-img")
 	currentImg.src = "./assets/images/slideshow/"+slides[nextSlide]["image"]
@@ -84,6 +71,12 @@ function changeSlideImg_texte (direction) {
 	let currentTexte = document.querySelector("#banner p")
 	currentTexte.innerHTML = slides[nextSlide]["tagLine"]
 	
+	let nextDot = document.querySelector(".dot"+nextSlide)
+	currentDot.classList.remove("dot_selected")
+	nextDot.classList.add("dot_selected")
+
+	return nextSlide
+
 }
 
 //---------------------------------------------//
