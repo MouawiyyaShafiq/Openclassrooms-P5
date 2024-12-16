@@ -19,8 +19,8 @@ const slides = [
 
 //Modif : ajout des eventlistener sur les flèches//
 
-let arrowLeft = document.querySelector(".arrow_left");
-let arrowRight = document.querySelector(".arrow_right");
+let arrowLeft = document.querySelector(".arrow_left")
+let arrowRight = document.querySelector(".arrow_right")
 
 arrowLeft.addEventListener("click", () =>{
 	console.log("flèche gauche clicked")
@@ -29,5 +29,24 @@ arrowLeft.addEventListener("click", () =>{
 arrowRight.addEventListener("click", () =>{
 	console.log("flèche droite clicked")
 })
+
+//---------------------------------------------//
+
+//Modif : ajout des bullet points au slider//
+
+let divDot = document.querySelector(".dots")
+
+for ( i=0 ; i < slides.length ; i++ ) {
+
+let dot = document.createElement("div")
+dot.classList.add("dot",i)
+
+if (i==0){
+	dot.classList.add("dot_selected")
+}
+
+divDot.appendChild(dot)
+
+}
 
 //---------------------------------------------//
