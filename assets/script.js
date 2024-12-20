@@ -61,8 +61,8 @@ function changeSlide (direction) {
 	let nextSlide = currentSlide + direction
 	let currentDot = document.querySelector(".dot"+currentSlide)
 
-	if (currentSlide==3 && direction==1 || currentSlide==0 && direction==-1) {
-		nextSlide = 3-currentSlide
+	if (currentSlide==slides.length-1 && direction==1 || currentSlide==0 && direction==-1) {
+		nextSlide = slides.length-1-currentSlide
 	}
 
 	let currentImg = document.querySelector(".banner-img")
